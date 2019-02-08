@@ -1,13 +1,33 @@
 ## Django commands
 
-1. 폴더생성
+1. 파이썬 설치
+
+   ```
+   git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+   echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+   echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+   exec "$SHELL"
+   
+   git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+   echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+   exec "$SHELL"
+   
+   pyenv install 3.6.7
+   pyenv global 3.6.7
+   python -V #확인
+   ```
+
+   
+
+2. 폴더생성
 
    ```
    mmkdir [프로젝트 이름]
    cd [프로젝트 이름]
    ```
 
-2. 가상환경 생성
+3. 가상환경 생성
 
    * 가상환경 생성 (1)
 
@@ -37,7 +57,7 @@
 
      * ```.python-version``` 파일을 찾아 삭제한다.
 
-3. djngo 프로젝트
+4. djngo 프로젝트
 
    * django 설치 (3)
 
@@ -62,7 +82,7 @@
 
 4. settings
 
-   * 28번째줄 'playground-hyeonjin23.c9users.io' 입력 후 실행하여 로켓 확인 (프로젝트만들자마자 바로)
+   * 28번째줄 '[playground]-hyeonjin23.c9users.io' 입력 후 실행하여 로켓 확인 (프로젝트만들자마자 바로)
 
      ```bash
      python manage.py runserver $IP:$PORT
@@ -73,7 +93,7 @@
    * startapp 이후  settings 40번째줄 (앱 만든 후)
 
      ```python
-     'pages(앱 이름).apps.PagesConfig',
+     'pages(앱 이름).apps.[Pages]Config',
      ```
 
 
