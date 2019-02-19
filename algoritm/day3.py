@@ -74,8 +74,8 @@ sys.stdin = open("input.txt", "r")
 #         end = mid-1
 # if IsDone == False:
 #     print(False)
-
-# 선택 정렬 과정
+#
+# # 선택 정렬 과정
 # L = list(map(int, input().split()))
 # n = len(L)
 # for a in range(n-1):
@@ -89,8 +89,8 @@ sys.stdin = open("input.txt", "r")
 #         L[a],L[c] = L[c],L[a]
 # print(L)
 #
-
-# Sum
+#
+# # Sum
 # for n in range(10):
 #     N=int(input())
 #     A=[[int(x) for x in input().split()]for y in range(100)]
@@ -104,9 +104,9 @@ sys.stdin = open("input.txt", "r")
 #         c+=A[i][i]
 #         d+=A[i][99-i]
 #     print("#%d %d"%(N,max(a,b,c,d)))
-
-
-# 달팽이
+#
+#
+# # 달팽이
 n=5
 for y in range(n):
     for x in range(n):
@@ -115,6 +115,6 @@ for y in range(n):
         if x>=y:
             a=x+y+1-2*m
         else:
-            a=(n*4)-(x+y)-3-6*m
+            a=(n-1-2*m)*4-(x+y-2*m)+1
         print("%d"%(a), end=" ")
     print()
