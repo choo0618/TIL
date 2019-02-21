@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-stack = [0]*10  # 시험시 10000
+stack = [0]*10000  # 시험시 10000
 top = -1
 
 # for i in range(1,4):
@@ -102,7 +102,7 @@ top = -1
 #         A.append([0]+[int(x)for x in input().split()]+[0])
 #     x=A[99].index(2)
 #     y=99
-#     while y>0:
+#     while y:
 #         if A[y][x-1]:
 #             while A[y][x-1]:
 #                 x-=1
@@ -115,31 +115,26 @@ top = -1
 #             y-=1
 #     print("#%d %d"%(N,x-1))
 
-# ladder-재귀 모르겠음
-ans=0
-def Ladder(h,n):
-    if h==0:
-        ans=n
+# ladder-재귀
+def Ladder(y,x):
+    if y==0:
+        print(f'#{N} {x-1}')
         return
-    elif A[h][n-1]:
-        while A[h][n-1]:
-            n-=1
-        h-=1
-    elif A[h][n+1]:
-        while A[h][n+1]:
-            n+=1
-        h-=1
-    else:
-        h-=1
-    Ladder(h,n)
-A=[]
-for y in range(100):
-    A.append([0]+[int(x)for x in input().split()]+[0])
-x=A[99].index(2)
+    elif A[y][x-1]:
+        while A[y][x-1]:
+            x-=1
+    elif A[y][x+1]:
+        while A[y][x+1]:
+            x+=1
+    # print(y, end=" ")
+    Ladder(y-1,x)
+for n in range(10):
+    N=int(input())
+    A=[]
+    for y in range(100):
+        A.append([0]+[int(x)for x in input().split()]+[0])
+    Ladder(99,A[99].index(2))
 
-Ladder(99,x)
-
-print(ans)
 
 
 

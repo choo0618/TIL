@@ -138,4 +138,4 @@ sys.stdin = open("input.txt", "r")
 #
 #     print("#%d"%(n+1),end=" ")
 #     for i in range(2*N):print(A[i], end=" ")
-#     print()
+# #     print()
