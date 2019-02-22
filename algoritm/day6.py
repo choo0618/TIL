@@ -1,24 +1,24 @@
-import sys
-sys.stdin = open("input.txt", "r")
-
-# # 종이 붙이기
-def Paper(here):
-    global ans
-    if here == howmany:
-        if howmany!=0:
-            ans += 1
-            return
-    if here > howmany: return
-    Paper(here + 10)
-    Paper(here + 20)
-    Paper(here + 20)
-N = int(input())
-for n in range(N):
-    ans = 0
-    howmany = int(input())
-    start = 0
-    Paper(start)
-    print("#%d %d"%(n+1,ans))
+# import sys
+# sys.stdin = open("input.txt", "r")
+#
+# # # 종이 붙이기
+# def Paper(here):
+#     global ans
+#     if here == howmany:
+#         if howmany!=0:
+#             ans += 1
+#             return
+#     if here > howmany: return
+#     Paper(here + 10)
+#     Paper(here + 20)
+#     Paper(here + 20)
+# N = int(input())
+# for n in range(N):
+#     ans = 0
+#     howmany = int(input())
+#     start = 0
+#     Paper(start)
+#     print("#%d %d"%(n+1,ans))
 
 
 # # 괄호 검사

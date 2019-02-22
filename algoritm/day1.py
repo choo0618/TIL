@@ -82,34 +82,34 @@ print(Data)
 # #
 #
 # Baby-Gin
-# tri = 0
-# run = 0
-#
-# counting = [0] * (max(Data)+1)
-#
-# for num in range(len(Data)):
-#     counting[Data[num]] += 1
-#
-# print(counting)
-#
-# for t in range(len(counting)):
-#     if counting[t] >= 3:
-#         counting[t] -= 3
-#         tri += 1
-# for r in range(0,len(counting)-2):
-#     if counting[r] == counting[r+1] == counting[r+2] >= 1:
-#         run += 1
-#         counting[r] -= 1
-#         counting[r+1] -= 1
-#         counting[r+2] -= 1
-#         if counting[r] == counting[r+1] == counting[r+2] == 1:
-#             run += 1
-#
-# if tri + run == 2:
-#     print("Baby-Gin!!!")
-# else:
-#     print("Nothing")
-#
+tri = 0
+run = 0
+
+counting = [0] * (max(Data)+1)
+
+for num in range(len(Data)):
+    counting[Data[num]] += 1
+
+print(counting)
+
+for t in range(len(counting)):
+    if counting[t] >= 3:
+        counting[t] -= 3
+        tri += 1
+for r in range(0,len(counting)-2):
+    if counting[r] == counting[r+1] == counting[r+2] >= 1:
+        run += 1
+        counting[r] -= 1
+        counting[r+1] -= 1
+        counting[r+2] -= 1
+        if counting[r] == counting[r+1] == counting[r+2] == 1:
+            run += 1
+
+if tri + run == 2:
+    print("Baby-Gin!!!")
+else:
+    print("Nothing")
+
 #
 # building
 # for num in range(10):
