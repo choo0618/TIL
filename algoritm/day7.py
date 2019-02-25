@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open("input.txt", "r")
+# import sys
+# sys.stdin = open("input.txt", "r")
 
 # # Forth
 # N = int(input())
@@ -39,7 +39,7 @@ sys.stdin = open("input.txt", "r")
 #     else:
 #         print(f'#{n + 1} error')
 
-# 미로
+# # 미로
 # dy = [0, 0, -1, 1]
 # dx = [-1, 1, 0, 0]
 #
@@ -54,13 +54,11 @@ sys.stdin = open("input.txt", "r")
 #     if A[y][x] == 3:
 #         result = 1
 #         return result
-#
 #     for dir in range(4):
 #         if IsPossible(y+dy[dir],x+dx[dir]):
 #             newY = y+dy[dir]
 #             newX = x+dx[dir]
 #             Miro(newY, newX)
-#
 #
 # N = int(input())
 # for n in range(N):
@@ -76,14 +74,36 @@ sys.stdin = open("input.txt", "r")
 #                 print(f'#{n+1} {result}')
 #                 break
 
-
-
-
-
-
-
-
-
-
-
-
+# # 계산기
+# for n in range(10):
+#     N=input()
+#     C=input()
+#     calc=[]
+#     stack=[]
+#     top=-1
+#     R=[]
+#     for i in C:
+#         if i.isdigit():
+#             calc.append(i)
+#         elif i==')':
+#             while stack[top]!='(':
+#                 calc.append(stack.pop())
+#                 top-=1
+#             stack.pop()
+#             top-=1
+#         else:
+#             if i=='+':
+#                 if stack[top]=='*':
+#                     while stack[top]!='*':
+#                         calc.append(stack.pop())
+#                         top-=1
+#             stack.append(i)
+#             top+=1
+#     for c in calc:
+#         if c == '+':
+#             R.append(R.pop()+R.pop())
+#         elif c == '*':
+#             R.append(R.pop()*R.pop())
+#         else:
+#             R.append(int(c))
+#     print(f'#{n+1} {R[0]}')
