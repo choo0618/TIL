@@ -28,7 +28,7 @@ sys.stdin = open("input.txt", "r")
 #     minsum = 987654321
 #     J(0)
 #     print(f'#{n+1} {minsum}')
-
+#
 # # 준혁이의 여자친구 만나러 가는길
 # P=[int(x) for x in input().split()]
 # A=[[int(x) for x in input().split()]for y in range(P[1])]
@@ -40,35 +40,30 @@ sys.stdin = open("input.txt", "r")
 #     MyMap[L[i+1]][L[i]] = L[i+2]
 # print(MyMap)
 
-# 토너먼트 카드게임
-def T(start):
-    if start==N:
+# 토너먼트 카드게임 - runtime
+def T(start,end):
+    if end-start<=1:
         return
-    if L[start] - L[start+1] == 1 or L[start] - L[start+1] == -2:
-        stack.append(L[start])
+    if stack[start][1] - stack[start+1][1] == 1 or stack[start][1] - stack[start+1][1] == -2 or stack[start][1]==stack[start+1][1]:
+        stack.pop(start+1)
     else:
-        stack.append(L[start + 1])
-    print(stack)
-    T(start+2)
+        stack.pop(start)
+    T(start+2,end)
+TC=int(input())
+for num in range(TC):
+    N=int(input())
+    L=[int(x) for x in input().split()]
+    stack=[]
+    for i in range(N):
+        stack.append([i+1,L[i]])
+    while stack:
+        T((N-1)//2+1,N)
+        T(0,(N-1)//2+1)
+        if len(stack) == 1:
+            break
+        N=N//2+1
 
-
-N=int(input())
-L=[int(x) for x in input().split()]
-stack=[]
-num=[]
-T(N//2)
-print(stack)
-# for match in range(N-1):
-#     for i in range(0,len(L),2):
-#         if L[i]-L[i+1]>=0 and L[i]-L[i+1]!=2:
-#             stack.append(L[i])
-#             num.append(i)
-#         else:
-#             stack.append(L[i+1])
-#             num.append(i+1)
-#     print(stack)
-#     print(num)
-
+    print(f'#{num+1} {stack[0][0]}')
 
 
 
