@@ -103,30 +103,22 @@ sys.stdin = open("input.txt", "r")
 #             result=cnt
 #     print("#%d %d"%(n+1,result))
 
-# 회문2
-# for n in range(1):
+# # 회문2
+# for num in range(10):
 #     N=int(input())
-#     C=[input() for x in range(8)]
-#     R=[]
-#     for y in range(8):
-#         for x in range(y+1):
-#             a=''
-#             b=''
-#             for z in range(8-y):
-#                 a+=C[x+y][z]
-#                 b+=C[z][x+y]
-#             R.append(a)
-#             R.append(b)
-#     print(R)
-#     # for r in range(len(R)):
-#     #     if R[r]==R[r][::-1]:
-#     #         print("#%d %s"%(n+1,R[r]))
+#     C=[input() for x in range(100)]
+#     start=1
+#     for y in range(100):
+#         a=''
+#         for x in range(100):
+#             a+=C[x][y]
+#         C.append(a)
+#     for n in range(200):
+#         for c in range(100):
+#             for z in range(start,101):
+#                 a=C[n][c:z]
+#                 b=a[::-1]
+#                 if a==b and len(a)>start:
+#                     start=len(a)
+#     print("#%d %d"%(N,start))
 
-for num in range(1):
-    N=int(input())
-    C=[input() for x in range(8)]
-    m=8
-    for n in range(m,0,-1):
-        if C[n]==C[n][::-1]:
-            print("#%d %d"%(n+1,m))
-        m-=1
