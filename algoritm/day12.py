@@ -75,4 +75,3 @@ for n in range(TC):
         N=N//2
         result+=L[N]
     print("#%d %d"%(n+1,result))
-
