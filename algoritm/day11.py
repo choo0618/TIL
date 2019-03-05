@@ -121,6 +121,7 @@ sys.stdin = open("input.txt", "r")
 #                 if a==b and len(a)>start:
 #                     start=len(a)
 #     print("#%d %d"%(N,start))
+<<<<<<< HEAD
 
 # # 민석이의 과제 체크하기
 # N=int(input())
@@ -151,3 +152,16 @@ sys.stdin = open("input.txt", "r")
 
 
 
+=======
+
+#민석이의 과제 체크하기
+N=int(input())
+for n in range(N):
+    L=[int(x) for x in input().split()]
+    L1=[int(x) for x in input().split()]
+    L2=[]
+    for i in range(L[0]):
+        if not i+1 in L1:
+            L2.append(i+1)
+    print(f'#{n+1} {" ".join(map(str,L2))}')
+>>>>>>> 60571121018996084abb4977674b70e1e2f19952
