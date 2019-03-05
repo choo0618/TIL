@@ -122,6 +122,37 @@ sys.stdin = open("input.txt", "r")
 #                     start=len(a)
 #     print("#%d %d"%(N,start))
 
+# # 민석이의 과제 체크하기
+# N=int(input())
+# for n in range(N):
+#     L=[int(x) for x in input().split()]
+#     L1=[int(x) for x in input().split()]
+#     L2=[]
+#     for i in range(L[0]):
+#         if not i+1 in L1:
+#             L2.append(i+1)
+#     print(f'#{n+1} {" ".join(map(str,L2))}')
+
+# # GNS
+# N=int(input())
+# for n in range(N):
+#     C=input()
+#     L=[x for x in input().split()]
+#     E=["ZRO","ONE","TWO","THR","FOR","FIV","SIX","SVN","EGT","NIN"]
+#     print("#%d"%(n+1),end='\n')
+#     for x in range(10):
+#         for i in range(L.count(E[x])):
+#             print(E[x],end=' ')
+#     print()
+
+
+
+
+
+
+
+=======
+
 #민석이의 과제 체크하기
 N=int(input())
 for n in range(N):
@@ -132,3 +163,4 @@ for n in range(N):
         if not i+1 in L1:
             L2.append(i+1)
     print(f'#{n+1} {" ".join(map(str,L2))}')
+>>>>>>> 60571121018996084abb4977674b70e1e2f19952
