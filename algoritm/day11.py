@@ -115,7 +115,7 @@ sys.stdin = open("input.txt", "r")
 #         C.append(a)
 #     for n in range(200):
 #         for c in range(100):
-#             for z in range(start,101):
+#             for z in range(start+c,101):
 #                 a=C[n][c:z]
 #                 b=a[::-1]
 #                 if a==b and len(a)>start:
@@ -146,12 +146,6 @@ sys.stdin = open("input.txt", "r")
 #     print()
 
 
-
-
-
-
-
-=======
 
 #민석이의 과제 체크하기
 N=int(input())

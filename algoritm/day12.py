@@ -61,18 +61,8 @@ for n in range(TC):
     N=int(input())
     L=[int(x) for x in input().split()]
     L.insert(0,0)
-    L.append(987654321)
-    c=N//2
-    result=0
-    while L[1]!=min(L[1:-1]):
-        for i in range(1,c+1):
-            a=min(L[2*i],L[2*i+1])
-            if L[i]>a:
-                if L[2*i]<=L[2*i+1]:
-                    L[i],L[2*i]=L[2*i],L[i]
-                else:
-                    L[i],L[2*i+1]=L[2*i+1],L[i]
-    while N!=1:
-        N=N//2
-        result+=L[N]
-    print("#%d %d"%(n+1,result))
+    B=[[0]*2 for y in range(max(L)+1)]
+    for x in range(1,len(L)//2):
+        B[L[x]][0]=L[2*x]       # L
+        B[L[x]][1]=L[2*x+1]     # R
+    print(B)
