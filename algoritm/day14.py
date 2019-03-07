@@ -1,26 +1,31 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-# 단조 증가
-T=int(input())
-for n in range(T):
-    N=int(input())
-    L=[int(x) for x in input().split()]
-    r=-1
-    for y in range(len(L)):
-        for x in range(y+1,l):
-            a=L[y]*L[x]
-            if a단조 and a>r:
-                r=a
-    for x in range(len(r)):
-        for i in range(0,len(r[x])-1):
-            if int(r[x][i])>int(r[x][i+1]):
-                r[x]=0
-                break
-        r[x]=int(r[x])
-    if sum(r):
-        print('#%d %d'%(n+1,r))
+# # 단조 증가
+# def D(x):
+#     for i in range(0,len(x)-1):
+#         if x[i]>x[i+1]:
+#             return False
+#     return True
+# T=int(input())
+# for n in range(T):
+#     N=int(input())
+#     L=[int(x) for x in input().split()]
+#     r=-1
+#     for y in range(len(L)):
+#         for x in range(y+1,len(L)):
+#             a=L[y]*L[x]
+#             if a>r and D(str(a)):
+#                 r=a
+#     print('#%d %d'%(n+1,r))
 
+# # 농작물 수확하기
+# N=int(input())
+# A=[[x for x in input().split()]for y in range(N)]
+# for y in range(N):
+#     for x in range(N//2-y,N//2+y):
+#         print(x,end=' ')
+#     print()
 
 # # 콤비네이션
 # def C(num,count):
@@ -54,8 +59,6 @@ for n in range(T):
 #             if L[x][y]!='*':
 #                 print(L[x][y],end="")
 #     print()
-
-# 어디에 단어가 들어갈 수 있을까
 
 # # 오셀로
 # def O(y,x,z):

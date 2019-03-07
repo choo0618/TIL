@@ -100,22 +100,22 @@ sys.stdin = open("input.txt", "r")
 #     inorder(1)
 #     print()
 
-# # 파스칼의 삼각형
-# T=int(input())
-# for num in range(T):
-#     N=int(input())
-#     L=[]
-#     print("#%d"%(num+1))
-#     for y in range(N):
-#         l=[]
-#         for x in range(y+1):
-#             if x==0 or x==y:
-#                 l.append(1)
-#             else:
-#                 l.append(L[y-1][x-1]+L[y-1][x])
-#         L.append(l)
-#     for n in range(len(L)):
-#         print(" ".join(map(str,L[n])))
+# 파스칼의 삼각형
+T=int(input())
+for num in range(T):
+    N=int(input())
+    L=[]
+    print("#%d"%(num+1))
+    for y in range(N):
+        l=[]
+        for x in range(y+1):
+            if x==0 or x==y:
+                l.append(1)
+            else:
+                l.append(L[y-1][x-1]+L[y-1][x])
+        L.append(l)
+    for n in range(len(L)):
+        print(*L[n])
 
 # # 사칙연산
 # for n in range(10):

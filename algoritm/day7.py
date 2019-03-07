@@ -107,3 +107,4 @@
 #         else:
 #             R.append(int(c))
 #     print(f'#{n+1} {R[0]}')
+
