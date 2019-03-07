@@ -145,29 +145,29 @@ sys.stdin = open("input.txt", "r")
 #         print(x,end=' ')
 #     print()
 
-# 단조 증가
-T=int(input())
-for n in range(T):
-    N=int(input())
-    L=[int(x) for x in input().split()]
-    l=len(L)
-    r=[]
-    for y in range(l):
-        for x in range(y+1,l):
-            r.append(str(L[y]*L[x]))
-    for x in range(len(r)):
-        for i in range(0,len(r[x])-1):
-            if int(r[x][i])>int(r[x][i+1]):
-                r[x]=0
-                break
-        r[x]=int(r[x])
-    if sum(r):
-        print('#%d %d'%(n+1,max(r)))
-    else:
-        print('#%d -1'%(n+1))
+# # 단조 증가
+# T=int(input())
+# for n in range(T):
+#     N=int(input())
+#     L=[int(x) for x in input().split()]
+#     l=len(L)
+#     r=[]
+#     for y in range(l):
+#         for x in range(y+1,l):
+#             r.append(str(L[y]*L[x]))
+#     for x in range(len(r)):
+#         for i in range(0,len(r[x])-1):
+#             if int(r[x][i])>int(r[x][i+1]):
+#                 r[x]=0
+#                 break
+#         r[x]=int(r[x])
+#     if sum(r):
+#         print('#%d %d'%(n+1,max(r)))
+#     else:
+#         print('#%d -1'%(n+1))
 
 
-    # # 다솔이의 다이아몬드 장식
+# # 다솔이의 다이아몬드 장식
 # N=int(input())
 # for n in range(N):
 #     C=input()
