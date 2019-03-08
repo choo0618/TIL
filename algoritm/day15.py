@@ -35,57 +35,107 @@ sys.stdin = open("input.txt", "r")
 #             R=r
 #     print("#%d %d"%(n+1,R))
 
-# 추억의 2048
-N=int(input())
-for num in range(N):
-    L=[x for x in input().split()]
-    n=int(L[0])
-    A=[[int(x) for x in input().split()]for y in range(n)]
-    W=0
-    if L[1]=='down':
-        W=1
-    elif L[1]=='right':
-        W=2
-    elif L[1]=='up':
-        W=3
-    for _ in range(W):
-        A=list(map(list,zip(*A[::-1])))
-    for y in range(n):
-        for x in range(n):
-            i=x
-            tmp=i+1
-            tmp1=i-1
-            if A[y][x]:
-                if x!=n-1:
-                    while not A[y][tmp]:
-                        if tmp==4:
-                            break
-                        tmp+=1
-                    if A[y][i]==A[y][tmp]:
-                        A[y][i]*=2
-                        A[y][tmp]=0
-                    if x!=0:
-                        while not A[y][tmp1]:
-                            if tmp1<0:
-                                break
-                            A[y][tmp1]=A[y][i]
-                            A[y][i]=0
-                            i-=1
-                            tmp1-=1
+# # 추억의 2048 - runtime
+# N=int(input())
+# for num in range(N):
+#     L=[x for x in input().split()]
+#     n=int(L[0])
+#     A=[[int(x) for x in input().split()]for y in range(n)]
+#     M=[[0]*n for _ in range(n)]
+#     W=0
+#     if L[1]=='down':W=1
+#     elif L[1]=='right':W=2
+#     elif L[1]=='up':W=3
+#     for _ in range(W):
+#         A=list(map(list,zip(*A[::-1])))
+#     for y in range(n):
+#         for x in range(0,n-1):
+#             if A[y][x] and A[y][x]==A[y][x+1]:
+#                 A[y][x]*=2
+#                 A[y][x+1]=0
+#             elif A[y][x] and A[y][x+1]==0:
+#                 for Q in range(x+1,n-x):
+#                     if A[y][Q]:
+#                         if A[y][x]==A[y][x+Q]:
+#                             A[y][x]*=2
+#                             A[y][x+Q]=0
+#                         break
+#     for j in range(n):
+#         cnt = 0
+#         for i in range(n):
+#             if A[j][i]:
+#                 M[j][cnt]=A[j][i]
+#                 cnt+=1
+#     if not W==0:
+#         for _ in range(4-W):
+#             M=list(map(list, zip(*M[::-1])))
+#     print("#%d"%(num+1))
+#     for R in range(n):
+#         print(*M[R])
 
-                else:
-                    while not A[y][i-1]:
-                        if i==0:
-                            break
-                        A[y][i-1]=A[y][i]
-                        A[y][i] = 0
-                        i-=1
-    for _ in range(4-W):
-        A=list(map(list, zip(*A[::-1])))
-    print("#%d"%(num+1))
-    for R in range(n):
-        print(*A[R])
+# # 추억의 2048
+# N=int(input())
+# for num in range(N):
+#     L=[x for x in input().split()]
+#     n=int(L[0])
+#     A=[[int(x) for x in input().split()]for y in range(n)]
+#     M=[[0]*n for _ in range(n)]
+#     W=0
+#     if L[1]=='down':W=1
+#     elif L[1]=='right':W=2
+#     elif L[1]=='up':W=3
+#     for _ in range(W):
+#         A=list(map(list,zip(*A[::-1])))
+#     for y in range(n):
+#         for x in range(0,n-1):
+#             if A[y][x]:
+#                 for Q in range(x+1,n):
+#                     if A[y][Q]:
+#                         if A[y][x]==A[y][Q]:
+#                             A[y][x]*=2
+#                             A[y][Q]=0
+#                         break
+#     for j in range(n):
+#         cnt = 0
+#         for i in range(n):
+#             if A[j][i]:
+#                 M[j][cnt]=A[j][i]
+#                 cnt+=1
+#     if not W==0:
+#         for _ in range(4-W):
+#             M=list(map(list, zip(*M[::-1])))
+#     print("#%d"%(num+1))
+#     for R in range(n):
+#         print(*M[R])
 
+# # 숫자 배열 회전
+# T=int(input())
+# for n in range(T):
+#     N=int(input())
+#     A=[[int(x)for x in input().split()]for y in range(N)]
+#     R=[]
+#     for _ in range(N):
+#         A=list(map(list,zip(*A[::-1])))
+#         R.append(A)
+#     print('#%d'%(n+1))
+#     for y in range(N):
+#         for x in range(3):
+#             print(''.join(map(str,R[x][y])),end=' ')
+#         print()
+
+# # 가장 빠른 문자열 타이핑
+# T=int(input())
+# for n in range(T):
+#     L=[x for x in input().split()]
+#     l=len(L[1])
+#     c,z=0,0
+#     while z!=len(L[0]):
+#         if L[0][z:l+z]==L[1]:
+#             z+=l
+#         else:
+#             z+=1
+#         c+=1
+#     print('#%d %d'%(n+1,c))
 
 
 
