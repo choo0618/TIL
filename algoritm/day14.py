@@ -144,7 +144,7 @@ sys.stdin = open("input.txt", "r")
 #             R+=1
 #     print('#%d %d'%(n+1,R))
 
-# Ladder 2
+# # Ladder 2
 # for n in range(10):
 #     N=int(input())
 #     A=[]
