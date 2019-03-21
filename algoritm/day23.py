@@ -11,7 +11,6 @@ sys.stdin=open('input.txt','r')
 #         L[x],L[m]=L[m],L[x]
 #     Recursion(x+1)
 #
-#
 # L=[int(x)for x in input().split()]
 # Recursion(0)
 
@@ -124,23 +123,19 @@ sys.stdin=open('input.txt','r')
 # GetSome(0)
 
 # 연습문제 3
-
-IsUsed= [0]*(rr+1)
-def GetSome(n , r):
-    if r > rr :
-        for i in range(1, rr+1):
-              print(IsUsed[i], end=' ')
+def C(y,x):
+    if y==N:
+        for m in range(N):
+            print(M[m],end=' ')
         print()
         return
-    if n > nn : return
-    IsUsed[r] = n
-    GetSome(n+1, r+1)
-    GetSome(n + 1, r)
-
-L=[int(x)for x in input().split()]
-print(L)
-GetSome(1,1)
+    M[y]=A[y][x]
 
 
-
-
+N=int(input())
+A=[[int(x)for x in input().split()]for y in range(N)]
+print(A)
+for i in range(N):
+    M=[0]*N
+    M[i]=A[0][i]
+    C(i,i)
