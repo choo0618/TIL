@@ -30,20 +30,18 @@ sys.stdin=open('input.txt','r')
 #     DFS(0,0,0)
 #     print('#%d %d'%((n+1),S))
 
-# 전깃줄1
-N=int(input())
-A=[[int(x)for x in input().split()]for y in range(N)]
-A.sort()
-L=[0]*N
-for j in range(N):
-    L[j]=1
-    max1=0
-    for i in range(j-1,-1,-1):
-        if A[j][1]>A[i][1]:
-            max1=int(L[i]+1)
-            if max1>L[j]:
-                L[j]=max1
-print(N-max(L))
-M2=max(L)
-for z in range(M2,-1,-1):
-    
+# # 전깃줄1
+# N=int(input())
+# A=[[int(x)for x in input().split()]for y in range(N)]
+# A.sort()
+# L=[0]*N
+# for j in range(N):
+#     L[j]=1
+#     max1=0
+#     for i in range(j-1,-1,-1):
+#         if A[j][1]>A[i][1]:
+#             max1=int(L[i]+1)
+#             if max1>L[j]:
+#                 L[j]=max1
+# print(N-max(L))
+# M2=max(L)
