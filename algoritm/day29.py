@@ -85,32 +85,36 @@ sys.stdin=open('input.txt','r')
 # # 최소비용
 # dy=[0,1,0,-1]
 # dx=[1,0,-1,0]
-# def IsPossible(y, x):
-#     if -1<y<N and -1<x<N:
-#         return True
-#     else:return False
-# def DFS(y,x,s):
-#     global S
-#     if y==x==N-1:
-#         if s<S:S=s
-#         return
-#     if s>=S:return
-#     for dir in range(4):
-#         if IsPossible(y+dy[dir],x+dx[dir]):
-#             newY=y+dy[dir]
-#             newX=x+dx[dir]
-#             if M[newY][newX]>s:
-#                 M[newY][newX]=s
-#                 if M[newY][newX]>=A[y][x]:DFS(newY,newX,s+1+(A[newY][newX]-A[y][x]))
-#                 else:DFS(newY,newX,s+1)
+# def IsSafe(y,x):
+#     if -1<y<N and -1<x<N:return True
+#     else: return False
+# def BFS(y,x):
+#     Q.append([y,x])
+#     while Q:
+#         tmp=Q.pop(0)
+#         hereY=tmp[0]
+#         hereX=tmp[1]
+#         for dir in range(4):
+#             newY=hereY+dy[dir]
+#             newX=hereX+dx[dir]
+#             if IsSafe(newY,newX):
+#                 if A[hereY][hereX]<A[newY][newX]:
+#                     if (newX or newY) and M[hereY][hereX]+1+(A[newY][newX]-A[hereY][hereX])<M[newY][newX]:
+#                         M[newY][newX]=M[hereY][hereX]+1+(A[newY][newX]-A[hereY][hereX])
+#                         Q.append([newY,newX])
+#                 else:
+#                     if (newX or newY) and M[hereY][hereX]+1<M[newY][newX]:
+#                         M[newY][newX] = M[hereY][hereX] + 1
+#                         Q.append([newY, newX])
 # T=int(input())
 # for n in range(T):
 #     N=int(input())
 #     A=[[int(x)for x in input().split()]for y in range(N)]
-#     M=[[999]*N for _ in range(N)]
-#     S=987654321
-#     DFS(0,0,0)
-#     print('#%d %d'%((n+1),S))
+#     M=[[987654321]*(N)for _ in range(N)]
+#     M[0][0]=0
+#     Q=[]
+#     BFS(0,0)
+#     print('#%d %d'%((n+1),(M[N-1][N-1])))
 
 # # 최소 이동 거리
 # T=int(input())
@@ -135,3 +139,50 @@ sys.stdin=open('input.txt','r')
 #             D[i]=min(D[i],D[w]+M[w][i])
 #     print(D)
 #     print('#%d %d'%((n+1),D[L[0]]))
+
+# # 전기버스 2
+# def DFS(which,battery,c):
+#     global R
+#     if which>=L[0]:
+#         if c<R:R=c;return
+#     if c>=R:
+#         return
+#     for i in range(battery,-1,-1):
+#         if which+i<=L[0]:
+#             DFS(which+i,L[which+i],c+1)
+# T=int(input())
+# for n in range(T):
+#     L=[int(x)for x in input().split()]
+#     L.append(0)
+#     R=987654321
+#     DFS(1,L[1],0)
+#     print('#%d %d'%((n+1),(R-1)))
+
+# # 보급로(BFS)
+# dy=[0,1,0,-1]
+# dx=[1,0,-1,0]
+# def IsSafe(y,x):
+#     if -1<y<N and -1<x<N:return True
+#     else: return False
+# def BFS(y,x):
+#     Q.append([y,x])
+#     while Q:
+#         tmp=Q.pop(0)
+#         hereY=tmp[0]
+#         hereX=tmp[1]
+#         for dir in range(4):
+#             newY=hereY+dy[dir]
+#             newX=hereX+dx[dir]
+#             if IsSafe(newY,newX):
+#                 if (newX or newY) and M[hereY][hereX]+A[newY][newX]<M[newY][newX]:
+#                     M[newY][newX]=M[hereY][hereX]+A[newY][newX]
+#                     Q.append([newY,newX])
+# T=int(input())
+# for n in range(T):
+#     N=int(input())
+#     A=[list(map(int,input()))for y in range(N)]
+#     M=[[987654321]*(N)for _ in range(N)]
+#     M[0][0]=0
+#     Q=[]
+#     BFS(0,0)
+#     print('#%d %d'%((n+1),(M[N-1][N-1])))
