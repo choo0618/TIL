@@ -1,7 +1,7 @@
 import sys
 sys.stdin=open('input.txt','r')
 
-# 연산
+연산
 # def YEONSAN(y,x,c):
 #     global R
 #     if x==y:
@@ -141,22 +141,22 @@ sys.stdin=open('input.txt','r')
 #     print('#%d %d'%((n+1),D[L[0]]))
 
 # # 전기버스 2
-# def DFS(which,battery,c):
-#     global R
-#     if which>=L[0]:
-#         if c<R:R=c;return
-#     if c>=R:
-#         return
-#     for i in range(battery,-1,-1):
-#         if which+i<=L[0]:
-#             DFS(which+i,L[which+i],c+1)
-# T=int(input())
-# for n in range(T):
-#     L=[int(x)for x in input().split()]
-#     L.append(0)
-#     R=987654321
-#     DFS(1,L[1],0)
-#     print('#%d %d'%((n+1),(R-1)))
+def DFS(which,battery,c):
+    global R
+    if which>=L[0]:
+        if c<R:R=c;return
+    if c>=R:
+        return
+    for i in range(battery,-1,-1):
+        if which+i<=L[0]:
+            DFS(which+i,L[which+i],c+1)
+T=int(input())
+for n in range(T):
+    L=[int(x)for x in input().split()]
+    L.append(0)
+    R=987654321
+    DFS(1,L[1],0)
+    print('#%d %d'%((n+1),(R-1)))
 
 # # 보급로(BFS)
 # dy=[0,1,0,-1]
