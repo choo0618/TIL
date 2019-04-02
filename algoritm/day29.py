@@ -1,7 +1,7 @@
 import sys
 sys.stdin=open('input.txt','r')
 
-연산
+# # 연산
 # def YEONSAN(y,x,c):
 #     global R
 #     if x==y:
