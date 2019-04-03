@@ -65,5 +65,4 @@ sys.stdin=open('input.txt','r')
 #         for x in range(L[1]):
 #             if V[y][x]:cnt+=1
 #     print('#%d %d'%((n+1),cnt))
-#     print(V)
 

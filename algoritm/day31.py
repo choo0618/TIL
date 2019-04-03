@@ -2,60 +2,45 @@ import sys
 sys.stdin=open('input.txt','r')
 
 # # 상원이의 생일파티
-def BFS(y,x):
-    global cnt
-    Q.append([y,x])
-    while Q:
-        tmp=Q.pop(0)
-        hy=tmp[0]
-        hx=tmp[1]
-        here=V[hy][hx]
-        if here==1 or here==2:
-            cnt+=1
-        for i in range(2,len(M[1])):
-            if M[hx][i] and not V[hx][i]:
-                Q.append([hx,i])
-                V[hx][i]=here+1
-T=int(input())
-for n in range(T):
-    L=[int(x)for x in input().split()]
-    A=[[int(x)for x in input().split()]for y in range(L[1])]
-    M=[[0]*(L[0]+1)for _ in range(L[0]+1)]
-    V=[[0]*(L[0]+1)for _ in range(L[0]+1)]
-    for y in range(L[1]):
-        M[A[y][0]][A[y][1]]=1
-        M[A[y][1]][A[y][0]]=1
-    Q=[]
-    cnt=0
-    for i in range(len(M[1])):
-        if M[1][i]:BFS(1,i)
-    print('#%d %d'%(n+1,cnt))
+# T=int(input())
+# for n in range(T):
+#     L=[int(x)for x in input().split()]
+#     A=[[int(x)for x in input().split()]for y in range(L[1])]
+#     A.sort()
+#     R=[[],[]]
+#     for y in range(L[1]):
+#         a=A[y][0]
+#         b=A[y][1]
+#         if a==1:R[0].append(b)
+#         elif a in R[0] and not b in R[0] and not b in R[1]:R[1].append(b)
+#         elif b in R[0] and not a in R[0] and not a in R[1]:R[1].append(a)
+#     print(R)
+#     print('#%d %d' % (n+1,len(R[0])+len(R[1])))
 
 # # 격자판의 숫자 이어 붙이기
 # dy=[0,1,0,-1]
 # dx=[1,0,-1,0]
 # def IsSafe(y,x):
 #     if -1<y<4 and -1<x<4:return True
-#     else: return False
-# def DFS(y,x,c,r):
-#     if c==8:
-#         if not r in R:
-#             R.append(r)
-#         return
+#     else:return False
+# def DFS(y,x,r):
 #     r+=str(A[y][x])
+#     if len(r)==7:
+#         if not int(r) in R:
+#             R.append(int(r))
+#         return
 #     for dir in range(4):
-#         newY=y+dy[dir]
-#         newX=x+dx[dir]
-#         if IsSafe(newY,newX):
-#             DFS(newY,newX,c+1,r)
+#         nY=y+dy[dir]
+#         nX=x+dx[dir]
+#         if IsSafe(nY,nX):
+#             DFS(nY,nX,r)
 # T=int(input())
 # for n in range(T):
 #     A=[[int(x)for x in input().split()]for y in range(4)]
 #     R=[]
 #     for y in range(4):
 #         for x in range(4):
-#             DFS(y,x,1,'')
-#     print(R)
+#             DFS(y,x,'')
 #     print('#%d %d'%((n+1),len(R)))
 
 # # 올림픽 종목투표
