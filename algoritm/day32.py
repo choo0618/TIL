@@ -45,44 +45,25 @@ sys.stdin=open('input.txt','r')
 #     print('#%d %d %d'%(n+1,M.index(max(M)),max(M)))
 
 # 사랑의 카운슬러
-# def C(y,x):
-#     global R
-#     s=y*y+x*x
-#     if sum(V)==N:
-#         if s<R:R=s;return
-#     if s>R:return
-#     for i in range(N):
-#         if V[i]:continue
-#         for j in range(N):
-#             if not V[j] and not V[i] and i!=j:
-#                 V[j]=V[i]=1
-#                 C(M[i][j][0]y,M[i][j][1]-x)
-#                 V[j]=V[i]=0
+def P(depth):
+    if depth==N and not r in C:C.append(r[:]);return
+    for i in range(N):
+        if not V[i]:
+            V[i]=True
+            r[depth]=CC[i]
+            P(depth+1)
+            V[i]=False
 T=int(input())
 for n in range(T):
     N=int(input())
     A=[[int(x)for x in input().split()]for y in range(N)]
-    # M=[[0]*(N) for _ in range(N)]
-    # for i in range(N):
-    #     for j in range(N):
-    #         M[i][j]=[A[j][0]-A[i][0],A[j][1]-A[i][1]]
-    # print(M)
-    # V=[0]*N
-    # R=987654321987654321
-    # C(0,0)
-    # print('#%d %d'%(n+1,R))
-    C=[['+']*(N//2)+['-']*(N//2)]
-    for i in range(N//2-1):
-        k=N//2-i-1
-        while k!=N-i-1:
-            a=C[-1].copy()
-            a[k],a[k+1]=a[k+1],a[k]
-            C.append(a)
-            k+=1
-    print(A)
-    print(C)
+    C=[]
+    CC=['+']*(N//2)+['-']*(N//2)
+    V=[0]*N
+    r=[0]*N
+    P(0)
     R=987654321987654321
-    for j in range(len(C)):
+    for j in range(len(C)//2):
         d=A.copy()
         s=[0,0]
         for l in range(N):
@@ -91,8 +72,6 @@ for n in range(T):
                 d[l][1]*=-1
             s[0]+=d[l][0]
             s[1]+=d[l][1]
-        #     print(s,end=' ')
-        # print()
         r=s[0]**2+s[1]**2
         if r<R:R=r
     print(n+1,R)
