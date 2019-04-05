@@ -83,38 +83,38 @@ sys.stdin=open('input.txt','r')
 #     print('#%d %d'%((n+1),R))
 
 # # 최소비용
-# dy=[0,1,0,-1]
-# dx=[1,0,-1,0]
-# def IsSafe(y,x):
-#     if -1<y<N and -1<x<N:return True
-#     else: return False
-# def BFS(y,x):
-#     Q.append([y,x])
-#     while Q:
-#         tmp=Q.pop(0)
-#         hereY=tmp[0]
-#         hereX=tmp[1]
-#         for dir in range(4):
-#             newY=hereY+dy[dir]
-#             newX=hereX+dx[dir]
-#             if IsSafe(newY,newX):
-#                 if A[hereY][hereX]<A[newY][newX]:
-#                     if (newX or newY) and M[hereY][hereX]+1+(A[newY][newX]-A[hereY][hereX])<M[newY][newX]:
-#                         M[newY][newX]=M[hereY][hereX]+1+(A[newY][newX]-A[hereY][hereX])
-#                         Q.append([newY,newX])
-#                 else:
-#                     if (newX or newY) and M[hereY][hereX]+1<M[newY][newX]:
-#                         M[newY][newX] = M[hereY][hereX] + 1
-#                         Q.append([newY, newX])
-# T=int(input())
-# for n in range(T):
-#     N=int(input())
-#     A=[[int(x)for x in input().split()]for y in range(N)]
-#     M=[[987654321]*(N)for _ in range(N)]
-#     M[0][0]=0
-#     Q=[]
-#     BFS(0,0)
-#     print('#%d %d'%((n+1),(M[N-1][N-1])))
+dy=[0,1,0,-1]
+dx=[1,0,-1,0]
+def IsSafe(y,x):
+    if -1<y<N and -1<x<N:return True
+    else: return False
+def BFS(y,x):
+    Q.append([y,x])
+    while Q:
+        tmp=Q.pop(0)
+        hereY=tmp[0]
+        hereX=tmp[1]
+        for dir in range(4):
+            newY=hereY+dy[dir]
+            newX=hereX+dx[dir]
+            if IsSafe(newY,newX):
+                if A[hereY][hereX]<A[newY][newX]:
+                    if (newX or newY) and M[hereY][hereX]+1+(A[newY][newX]-A[hereY][hereX])<M[newY][newX]:
+                        M[newY][newX]=M[hereY][hereX]+1+(A[newY][newX]-A[hereY][hereX])
+                        Q.append([newY,newX])
+                else:
+                    if (newX or newY) and M[hereY][hereX]+1<M[newY][newX]:
+                        M[newY][newX] = M[hereY][hereX] + 1
+                        Q.append([newY, newX])
+T=int(input())
+for n in range(T):
+    N=int(input())
+    A=[[int(x)for x in input().split()]for y in range(N)]
+    M=[[987654321]*(N)for _ in range(N)]
+    M[0][0]=0
+    Q=[]
+    BFS(0,0)
+    print('#%d %d'%((n+1),(M[N-1][N-1])))
 
 # # 최소 이동 거리
 # T=int(input())
