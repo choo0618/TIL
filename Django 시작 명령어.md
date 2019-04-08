@@ -63,6 +63,7 @@
 
      ```
      pip install django
+     pip install django==2.1.8
      ```
 
    * startproject (4)
@@ -133,3 +134,4 @@
      ```
 
      
+
