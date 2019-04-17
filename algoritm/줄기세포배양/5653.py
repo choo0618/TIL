@@ -3,6 +3,7 @@ sys.stdin = open('5653.txt', 'r')
 
 dy=[-1,0,1,0]
 dx=[0,1,0,-1]
+
 def V(y,x):
     global Q
     for dir in range(4):
