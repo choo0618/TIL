@@ -13,7 +13,10 @@
   (관리하려는 폴더 안에서 입력)
 
 * `git remote add origin 주소` : 원격 저장소(remote repository) 주소등록
+
   * `git remote set-url origin 주소` : 원격 저장소 수정
+  * `git remote -v` : 확인
+  * `git remote remove`: 삭제
 
 ## Git repo clone한 경우
 
@@ -28,6 +31,7 @@
 * `git push -u origin master` : remote로 등록된 원격 저장소에 commit한 것들 올리기
   * 이후에는 `git push`만 입력해도 동작합니다. `git clone`을 한 경우에도 해당합니다.
   * 이 컴퓨터에서 최초 push인 경우, 로그인 창이 뜨며 로그인을 해줍니다.
+  * 원격 주소 등록 후 : `git push 이름 master`
 
 
 
