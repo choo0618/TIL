@@ -15,25 +15,30 @@ def BFS(y,x,s,c,r):
         Q.append([y,x,r])
         M[y][x]=9
         t=1
-        d=0
+        d=999
+        dq=[]
         while Q:
             tmp=Q.pop(0)
             hY=tmp[0]
             hX=tmp[1]
             hr=tmp[2]
+            if hr>d:break
             if 0<A[hY][hX]<s:
-                y=hY
-                x=hX
-                c-=1
-                A[y][x]=0
-                R+=hr
+                if hr<d:d=hr
                 t=0
-                break
+                dq.append([hY,hX,hr])
             for dir in range(4):
                 nY=hY+dy[dir]
                 nX=hX+dx[dir]
                 if IS(nY,nX,s) and not M[nY][nX]:Q.append([nY,nX,hr+1]);M[nY][nX]=9
         if t:break
+        else:
+            dq.sort()
+            y=dq[0][0]
+            x=dq[0][1]
+            A[y][x] = 0
+            c-=1
+            R+=d
 N=int(input())
 A=[[int(x)for x in input().split()]for y in range(N)]
 R=0
