@@ -135,3 +135,21 @@
 
      
 
+7. windows에 setting
+
+   cmd 이용
+
+   ```bash
+   1. api-venv\Scripts\activate.bat 가상환경 활성화
+   	deactivate 가상환경 종료
+   
+   2. pip install django
+   
+   3. django-admin startproject 프로젝트이름 .
+   
+   4. python manage.py runserver 실행
+   
+   5. localhost:8000
+   ```
+
+   
