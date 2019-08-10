@@ -1,35 +1,45 @@
 import sys
 sys.stdin = open('bj15683.txt','r')
 
-import copy
-d=[0,4,2,4,4,1]
-dy=[[0,0,0,0],[[-1],[0],[1],[0]],[[0,0],[-1,1]],[[-1,0],[0,1],[1,0],[0,-1]],[[-1,0,0],[1,0,-1],[0,1,0],[1,0,-1]],[[1,1,1,1]]]
-dx=[[0,0,0,0],[[0],[1],[0],[-1]],[[-1,1],[0,0]],[[0,1],[1,0],[0,-1],[-1,0]],[[0,1,-1],[0,1,0],[1,0,-1],[0,-1,0]],[[1,1,1,1]]]
+dx=[0,1,0,-1]
+dy=[-1,0,1,0]
+d=[[0],[[0],[1],[2],[3]],[[0,2],[1,3]],[[0,1],[1,2],[2,3],[0,3]],[[0,1,2],[1,2,3],[2,3,0],[3,0,1]],[[0,1,2,3]]]
 def IS(y,x):
-    if -1<y<L[0] and -1<x<L[1]:return True
+    if -1<x<L[1] and -1<y<L[0] and A[y][x]!=6:return True
     return False
-def BFS(y,x,i):
+def C():
     r=0
-    for _ in range(d[i]):
-        cnt=0
-        M=copy.deepcopy(A)
-        Q=[]
-        Q.append([y,x])
-        while Q:
-            tmp=Q.pop(0)
-            hY=tmp[0]
-            hX=tmp[1]
-            for dir in range(len(dy[i][_])):
-                nY=hY+dy[i][_][dir]
-                nX=hX+dx[i][_][dir]
-                if IS(nY,nX) and not M[nY][nX]:
-
+    for y in range(L[0]):
+        for x in range(L[1]):
+            if not A[y][x]:r+=1
+    return r
+def DFS(x):
+    global A,R
+    if x==len(Q):
+        r=C()
+        if r<R:R=r
+        return
+    for i in d[Q[x][2]]:
+        q=[]
+        hY=Q[x][0]
+        hX=Q[x][1]
+        for j in i:
+            n=1
+            while True:
+                nY=hY+n*dy[j]
+                nX=hX+n*dx[j]
+                if IS(nY,nX):
+                    if not A[nY][nX]:A[nY][nX]=Q[x][2];q.append([nY,nX])
+                else:break
+                n+=1
+        DFS(x+1)
+        for b in q:A[b[0]][b[1]]=0
 L=[int(x)for x in input().split()]
 A=[[int(x)for x in input().split()]for y in range(L[0])]
-print(L)
-print(A)
-R=0
+Q=[]
+R,r=9999,0
 for i in range(L[0]):
     for j in range(L[1]):
-        if M[i][j] and M[i][j]!=6:
-            BFS(i,j,M[i][j])
+        if A[i][j]and A[i][j]!=6:Q.append([i,j,A[i][j]])
+DFS(0)
+print(R)

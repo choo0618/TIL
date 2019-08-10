@@ -47,7 +47,7 @@ sys.stdin = open("input.txt", "r")
 #     elif L[1]=='right':W=2
 #     elif L[1]=='up':W=3
 #     for _ in range(W):
-#         A=list(map(list,zip(*A[::-1])))
+        A=list(map(list,zip(*A[::-1])))
 #     for y in range(n):
 #         for x in range(0,n-1):
 #             if A[y][x] and A[y][x]==A[y][x+1]:
