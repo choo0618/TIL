@@ -3,7 +3,7 @@ sys.stdin = open('5650.txt','r')
 
 dx=[0,1,0,-1]
 dy=[-1,0,1,0]
-D=[[],[2,3,1,0],[1,3,0,2],[3,2,0,1],[2,0,3,1],[2,3,0,1]]
+D=[0,[2,3,1,0],[1,3,0,2],[3,2,0,1],[2,0,3,1],[2,3,0,1]]
 def IS(y,x):
     if -1<y<N and -1<x<N:return True
     return False
@@ -20,26 +20,23 @@ def Go(y,x,d):
             nY+=dy[d]
             nX+=dx[d]
             r+=1
+        n=A[nY][nX]
         if [nY,nX]==s:
             if r>R:R=r
             break
-        elif not A[nY][nX]:
-            nY+=dy[d]
-            nX+=dx[d]
-        elif A[nY][nX]==-1:
+        elif n==-1:
             if r>R:R=r
             break
-        elif 0<A[nY][nX]<6:
-            d=D[A[nY][nX]][d]
-            nY+=dy[d]
-            nX+=dx[d]
+        elif 0<n<6:
+            d=D[n][d]
             r+=1
-        elif 5<A[nY][nX]<11:
-            for w in M[A[nY][nX]]:
+        elif 5<n<11:
+            for w in M[n]:
                 if w!=[nY,nX]:
-                    nY=w[0]+dy[d]
-                    nX=w[1]+dx[d]
+                    nY,nX=w[0],w[1]
                     break
+        nY+=dy[d]
+        nX+=dx[d]
 T=int(input())
 for t in range(T):
     N=int(input())
