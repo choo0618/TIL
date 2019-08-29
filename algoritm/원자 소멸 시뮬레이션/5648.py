@@ -10,19 +10,21 @@ for n in range(T):
     for p in A:
         p[0]*=2
         p[1]*=2
-    R,t=0,0
-    while t<4000:
-        S,l,ll=[],[],[]
+    R=0
+    while N:
+        Q,l,ll=[],set(),set()
         for a in A:
             a[0]+=dx[a[2]]
             a[1]+=dy[a[2]]
-            if not [a[0],a[1]]in l:l.append([a[0],a[1]])
-            else:ll.append([a[0],a[1]])
-        if ll:
-            for s in A:
-                if [s[0],s[1]] in ll:S.append(s)
-        for rr in S:
-            R+=rr[3]
-            A.pop(A.index(rr))
-        t+=1
+            le=len(l)
+            l.add((a[0],a[1]))
+            if le==len(l):ll.add((a[0],a[1]))
+        for s in A:
+            if ll and (s[0],s[1]) in ll:
+                R+=s[3]
+                N-=1
+            elif max(s)>2000 or min(s)<-2000:N-=1
+            else:
+                Q.append(s)
+        A=Q
     print('#%d %d'%(n+1,R))
