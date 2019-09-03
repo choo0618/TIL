@@ -1,33 +1,33 @@
 import sys
 sys.stdin = open('2105.txt','r')
 
-dx=[1,-1,-1,1]
-dy=[1,1,-1,-1]
+import copy
+dx=[1,0,-1,0]
+dy=[0,1,0,-1]
+di=[1,-1]
 def IS(y,x):
-    if -1<y<N and -1<x<N and not(y==0 and x==0) and not(y==0 and x==N-1) and  not(y==N-1 and x==0) and not(y==N-1 and x==N-1):return True
+    if 0<y<N-1 and 0<x<N-1:return True
     return False
-# def DFS(y,x):
-#     global R
-#     for dir in range(4):
-#         if not d[dir]:
-#             nY=y+dy[dir]
-#             nX=x+dx[dir]
-#             if IS(nY,nX):
-#                 if not A[nY][nX] in r:
-#                     r.append(A[nY][nX])
-#                     DFS(nY,nX)
-#                 else:d[dir]=1
-#             else:d[dir]=1
-#     if sum(d)==4 and len(r)>R:R=len(r);return
-def BFS(y,x):
-
 T=int(input())
-for n in range(T):
+for t in range(T):
     N=int(input())
     A=[[int(x)for x in input().split()]for y in range(N)]
     R=-1
-    for i in range(N):
+    for i in range(1,N-1):
         for j in range(1,N-1):
-            Q,d=[[i,j]],[0,0,0,0]
-            BFS(y,x)
-    print('#%d %d'%(n+1,R))
+            print(i,j)
+            d=set()
+            for dir in range(4):
+                d.add(A[i+dy[dir]][j+dx[dir]])
+            if len(d)==4:
+                for z in di:
+                    dd,r,n=copy.deepcopy(d),4,1
+                    while True:
+                        if IS(i+n*z,j+n):
+                            for ddir in range(4):dd.add(A[i+n*z+dy[ddir]][j+n+dx[ddir]])
+                        else:break
+                        if len(dd)!=r+2:break
+                        else:r+=2
+                        n+=1
+                    if r>R:R=r
+    print('#%d %d'%(t+1,R))

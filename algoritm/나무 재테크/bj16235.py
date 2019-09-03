@@ -11,9 +11,7 @@ A=[[int(x)for x in input().split()]for y in range(L[0])]
 T=[[int(x)for x in input().split()]for y in range(L[1])]
 M=[[5]*L[0]for _ in range(L[0])]
 while L[2]:
-    S=[]
-    t=[]
-    t1=[]
+    S,t,t1=[],[],[]
     for i in range(len(T)):
         ty=T[i][0]-1
         tx=T[i][1]-1
