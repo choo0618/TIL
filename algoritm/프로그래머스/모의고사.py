@@ -191,21 +191,159 @@ import itertools
 #     return None
 # solution([93,30,55,90,30,55],[1,30,5,1,30,5])
 
-def solution(bridge_length, weight, truck_weights):
-    Time = 0
-    L, Arr = len(truck_weights), 0
-    bridge = [0] * (bridge_length + 1)
-    while True:
-        if bridge[-1]:
-            Arr+=1
-            bridge[-1]=0
-        if Arr==L:break
-        if truck_weights and sum(bridge)+truck_weights[0] <= weight:
-            bridge[0] = truck_weights.pop(0)
-        bridge.insert(bridge.pop(),0)
-        Time += 1
-    print(Time+1)
-    return Time+1
+# def solution(bridge_length, weight, truck_weights):
+#     Time = 0
+#     L, Arr = len(truck_weights), 0
+#     bridge = [0] * (bridge_length + 1)
+#     while True:
+#         if bridge[-1]:
+#             Arr+=1
+#             bridge[-1]=0
+#         if Arr==L:break
+#         if truck_weights and sum(bridge)+truck_weights[0] <= weight:
+#             bridge[0] = truck_weights.pop(0)
+#         bridge.insert(bridge.pop(),0)
+#         Time += 1
+#     print(Time+1)
+#     return Time+1
+#
+# solution(100,100,[10,10,10,10,10,10,10,10,10,10])
 
-solution(100,100,[10,10,10,10,10,10,10,10,10,10])
+# def DFS(list):
+#     if len(R) == b: return
+#     if sum(visited) == len(a):
+#         r=''.join(list)
+#         R.append(r)
+#         return
+#     for i in range(len(a)):
+#         if not visited[i]:
+#             visited[i]=1
+#             list.append(a[i])
+#             DFS(list)
+#             visited[i]=0
+#             list.pop()
+# a, b = ['0','1','2'],5
+# a.sort()
+# visited = [0] * len(a)
+# R=[]
+# DFS([])
+# print(R[-1])
 
+# a, b = 7,[1,0,1,0,0,0,1]
+# distance = [987654321] * a
+# R=0
+# for i in range(a):
+#     if not b[i]:
+#         visited = [0] * a
+#         Q = [[i,0]]
+#         visited[i] = 1
+#         while Q:
+#             now, dis = Q.pop(0)
+#             if b[now] and dis < distance[i]:
+#                 distance[i] = dis
+#                 break
+#             if now-1 > 0 and not visited[now-1]:
+#                 visited[now - 1] = 1
+#                 Q.append([now-1,dis+1])
+#             if now + 1 < a and not visited[now+1]:
+#                 visited[now + 1] = 1
+#                 Q.append([now+1,dis+1])
+# for r in distance:
+#     if r==987654321:continue
+#     elif r>R:R=r
+# print(str(R))
+
+import sys
+sys.stdin = open('input.txt','r')
+# a = int(input())
+# b = [[int(x)for x in input().split()]for y in range(a)]
+# r=set()
+# Time=set()
+# R=1
+# for n in b:
+#     L = len(Time)
+#     for t in range(n[0],n[1]):
+#         Time.add(t)
+#     if len(Time) != L + n[1] - n[0]:
+#         R+=1
+# print(R)
+#
+# dx = [1,0]
+# dy = [0,1]
+# def IS(y,x):
+#     if y<=b[1] and x<=b[0]:return True
+#     return False
+# a = [int(x)for x in input().split()]
+# b = [int(x)for x in input().split()]
+# if b[0]>a[0] and b[1]>a[1]:
+#     print('fail')
+# else:
+#     M= [[0]*(b[0])for m in range(b[1]+1)]
+#     Time = sum(b)
+#     up = 1
+#     down = 1
+#     for u in range(1,b[0]+b[1]+1):
+#         up *= u
+#     for d1 in range(1,b[0]+1):
+#         down *= d1
+#     for d2 in range(1,b[1]+1):
+#         down *= d2
+#     count = up//down
+#     print(Time)
+#     print(count)
+
+a = [int(x)for x in input().split()]
+b = [int(input())for x in range(a[0])]
+if a[0]<=b[0]:
+    print(max(b))
+else:
+    Time = [0]*a[1]
+    n = 0
+    while b:
+        Time[n] += b.pop(0)
+        n = Time.index(min(Time))
+    print(max(Time))
+
+
+# a = int(input())
+# b = [int(x) for x in input().split()]
+# distance = [987654321] * a
+# R=0
+# for i in range(a):
+#     if not b[i]:
+#         visited = [0] * a
+#         Q = [[i,0]]
+#         visited[i] = 1
+#         while Q:
+#             now, dis = Q.pop(0)
+#             if b[now] and dis < distance[i]:
+#                 distance[i] = dis
+#                 break
+#             if now-1 >= 0 and not visited[now-1]:
+#                 visited[now - 1] = 1
+#                 Q.append([now-1,dis+1])
+#             if now + 1 < a and not visited[now+1]:
+#                 visited[now + 1] = 1
+#                 Q.append([now+1,dis+1])
+# for r in distance:
+#     if r==987654321:continue
+#     elif r>R:R=r
+# print(str(R))
+
+# a = [x for x in input().split()]
+# b = [[x for x in input().split()]for y in range(int(a[0]))]
+# sero = 0
+# garo = 0
+# for i in range(int(a[0])):
+#     b[i][0] = int(b[i][0])
+#     garo += b[i][0]
+#     if b[i][0] > sero:
+#         sero = 2*b[i][0]-1
+# print(b)
+# print(sero,garo)
+# R = [[]*10]
+# for go in b:
+#     r = [['.']*go[0]+[' ']for _ in range(sero)]
+#     for num in go[1]:
+#         if num == '1':
+#
