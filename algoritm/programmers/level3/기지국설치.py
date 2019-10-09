@@ -11,4 +11,4 @@ def solution(n, stations, w):
             N+=2*w+1
             R+=1
     return R
-print(solution(16,[9],2))
+print(solution(11,[4,11],1))
