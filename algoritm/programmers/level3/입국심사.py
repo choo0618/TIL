@@ -17,7 +17,6 @@ def solution(n, times):
             Left = mid + 1
     if answer == tmp:
         answer = Right+1
-
     return answer
 
-print(solution(1,[7,10]))
+print(solution(10,[1]))
