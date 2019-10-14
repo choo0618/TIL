@@ -39,3 +39,6 @@ for t in range(T):
                 Result.append(A[i][j])
     Result.sort()
     print('#%d %d %d'%(t+1, Result[0], Max))
+
+
+max(map(max, list))
