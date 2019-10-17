@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('bj17472.txt', 'r')
 
-import pprint
+import itertools
 dx = [1,0,-1,0]
 dy = [0,1,0,-1]
 def IS(y,x):
@@ -31,11 +31,8 @@ for i in range(N):
                             Map[nY][nX] = n
                 check[n] += que
                 Que = que
-# pprint.pprint(Map)
 Distance = [[99999]*(n+1) for _ in range(n+1)]
-# print(check)
 Dis_Index = []
-print(Dis_Index)
 for idx, Dis in enumerate(check):
     for dis in Dis:
         for dir in range(4):
@@ -56,19 +53,19 @@ for idx, Dis in enumerate(check):
                 Distance[idx][Map[hY][hX]] = cnt
                 if not [Map[hY][hX],idx,cnt] in Dis_Index:
                     Dis_Index.append([idx,Map[hY][hX],cnt])
-                # Dis_Index[idx].append(Map[hY][hX])
-pprint.pprint(Distance)
-print(Dis_Index)
 Island = [99999]*(n+1)
-Result = -1
-for idx, dis in enumerate(Distance[1]):
-    if dis != 99999:
-        result = dis
-        visited = [1,1]*n
-        Que = [idx, dis]
-        # while Que:
-        #     nIsland = Que.pop(0)
-        #     for iidx, q in enumerate(Distance[idx]):
-        #         if iidx
-        #         visited[iidx] = 1
-
+Result = 99999
+Comb = list(itertools.combinations(Dis_Index,n-1))
+for comb in Comb:
+    result = 0
+    visited = [1]+[0]*n
+    visited[comb[0][0]] = 1
+    for turn in range(3):
+        for idx,c in enumerate(comb):
+            if (visited[c[0]] and not visited[c[1]]) or (visited[c[1]] and not visited[c[0]]):
+                visited[c[0]], visited[c[1]] = 1, 1
+                result += c[2]
+    if all(visited) and result < Result:
+        Result = result
+if Result == 99999:Result = -1
+print(Result)
