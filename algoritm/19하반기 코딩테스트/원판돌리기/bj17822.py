@@ -8,17 +8,30 @@ def IS(y,x):
     if -1<=x<=M and -1<y<N:return True
     return False
 
+def Same(y,x):
+    for dir in range(4):
+        nY = y + dy[dir]
+        nX = x + dx[dir]
+        if IS(nY, nX):
+            if nX == -1:
+                nX = M - 1
+            elif nX == M:
+                nX = 0
+            if Arr[i][j] == Arr[nY][nX]:
+                Map[i][j] = 1
+
 N, M, T = map(int, input().split())
 Arr = [list(map(int, input().split()))for _ in range(N)]
 Rotate = [list(map(int, input().split()))for _ in range(T)]
-Count = N * M
 
 for rotate in Rotate:
-    Sum = 0
+    Sum, Count = 0, 0
     for y in range(N):
         for x in range(M):
-            if Arr[y][x] != 1001:
+            if Arr[y][x]:
+                Count += 1
                 Sum += Arr[y][x]
+    if not Count: break
     Check = 1
     Map = [[0]*M for m in range(N)]
     p = rotate[0]
@@ -31,37 +44,26 @@ for rotate in Rotate:
         p += rotate[0]
     for i in range(N):
         for j in range(M):
-            if not Map[i][j] and Arr[i][j] != 1001:
-                Que = [[i,j]]
-                while Que:
-                    que = []
-                    for q in Que:
-                        for dir in range(4):
-                            nY = q[0] + dy[dir]
-                            nX = q[1] + dx[dir]
-                            if IS(nY, nX):
-                                if nX == -1: nX = M-1
-                                elif nX == M: nX = 0
-                                if Arr[q[0]][q[1]] == Arr[nY][nX] and not Map[nY][nX]:
-                                    Check = 0
-                                    Map[q[0]][q[1]] = 1
-                                    Map[nY][nX] = 1
-                                    que.append([nY, nX])
-                    Que = que
+            if Arr[i][j]:
+                Same(i,j)
     for y in range(N):
         for x in range(M):
             if Map[y][x]:
+                Check = 0
                 Sum -= Arr[y][x]
-                Arr[y][x] = 1001
-                Count -= 1
-    if Check and Count:
-        check = Sum/Count
+                Arr[y][x] = 0
+    if Check:
+        avg = Sum/Count
         for y in range(N):
             for x in range(M):
                 if Arr[y][x]:
-                    if Arr[y][x] > check:
+                    if Arr[y][x] > avg:
                         Arr[y][x] -= 1
-                    elif Arr[y][x] < check:
+                    elif Arr[y][x] < avg:
                         Arr[y][x] += 1
-print(Sum)
-
+R = 0
+for i in range(N):
+    for j in range(M):
+        if Arr[i][j]:
+            R += Arr[i][j]
+print(R)
