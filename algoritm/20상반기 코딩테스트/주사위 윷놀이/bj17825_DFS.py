@@ -2,9 +2,9 @@ import sys
 sys.stdin = open('bj17825.txt','r')
 
 def DFS(Idx,r,state):
-    global R,cnt
+    global R
     if Idx == 10:
-        cnt+=1
+        print(state)
         if r>R:R=r
         return
     for m in [1,2,3,4]:
@@ -41,7 +41,7 @@ State=[
 [17,18,19,31,'f','f'],
 [18,19,31,'f','f','f'],
 [19,31,'f','f','f','f'],
-[20,21,22,29,30,31],
+[20,21,22,28,29,30],
 [21,22,28,29,30,31],
 [22,28,29,30,31,'f'],
 [23,24,28,29,30,31],
@@ -54,6 +54,5 @@ State=[
 [30,31,'f','f','f','f'],
 [31,'f','f','f','f','f'],]
 R = 0
-cnt=0
 DFS(0,0,[0,0,0,0,0])
-print(cnt)
+print(R)
