@@ -1,0 +1,5 @@
+﻿  malloc.c
+C:\Users\현진\HJ\C\Malloc\malloc.c(5,28): warning C4013: 'malloc'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\현진\HJ\C\Malloc\malloc.c(7,6): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\현진\HJ\C\Malloc\malloc.c(22,6): warning C4013: 'free'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  Malloc.vcxproj -> C:\Users\현진\HJ\C\Malloc\Debug\Malloc.exe
