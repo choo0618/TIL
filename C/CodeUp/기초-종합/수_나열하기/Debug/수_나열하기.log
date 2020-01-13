@@ -1,0 +1,3 @@
+﻿  수나열하기.c
+C:\Users\현진\HJ\C\CodeUp\기초-종합\수_나열하기\수나열하기.c(21,28): warning C4101: 'r' :참조되지 않은 지역 변수입니다.
+  수_나열하기.vcxproj -> C:\Users\현진\HJ\C\CodeUp\기초-종합\수_나열하기\Debug\수_나열하기.exe
