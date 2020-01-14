@@ -14,13 +14,13 @@ while True:
         except:pass
         L.append(l)
     if tmp:break
-    for n in range(int(input())):
-        Stack,E = [],0
-        Stack.append(int(input()))
+    N=int(input())
+    for n in range(N):
+        Stack,E = [int(input())],0
         for l in L:
             try:
                 if l[0]=='NUM':Stack.insert(0,l[1])
-                elif l[0]=='POP':Stack=Stack[1:]
+                elif l[0]=='POP':Stack.pop(0)
                 elif l[0]=='INV':Stack[0]*=-1
                 elif l[0]=='DUP':Stack.insert(0,Stack[0])
                 elif l[0]=='SWP':Stack[0],Stack[1]=Stack[1],Stack[0]
@@ -42,5 +42,4 @@ while True:
                 break
         if E or len(Stack)!=1 or abs(Stack[0])>10**9:print('ERROR')
         else:print(Stack[0])
-    x=input()
-    print()
+    print(input())
