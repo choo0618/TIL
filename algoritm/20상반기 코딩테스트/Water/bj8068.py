@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('bj1113.txt','r')
+sys.stdin = open('bj8068.txt','r')
 
 dx=[1,0,-1,0]
 dy=[0,1,0,-1]
@@ -25,7 +25,7 @@ def BFS(y,x,h):
 N,M=map(int,input().split())
 Arr,Max,R=[],0,0
 for i in range(N):
-    I = list(map(int,input()))
+    I = list(map(int,input().split()))
     Arr.append(I)
     if max(I)>Max:Max=max(I)
 for m in range(1,Max):
