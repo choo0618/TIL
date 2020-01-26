@@ -3,12 +3,19 @@ sys.stdin = open('bj5719.txt')
 
 import heapq
 
-Heap=[8,5,2,4,7,1]
-heapq.heapify(Heap)
-print(Heap)
-heap = [4, 1, 7, 3, 8, 5]
-heapq.heapify(heap)
-print(heap)
+N=[]
+for n in [1,3,5,4]:
+    heapq.heappush(N,n)
+for q in range(4):
+    print(heapq.heappop(N))
+# N=[4, 1, 7, 3, 8, 5]
+# heapq.heapify(N)
+# for n in range(6):
+#     print(heapq.heappop(N))
+# # print(heap)
+# heap = [4, 1, 7, 3, 8, 5]
+# heapq.heapify(heap)
+# print(heap)
 
 
 
