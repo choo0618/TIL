@@ -65,15 +65,15 @@ for y in range(N):
             Map[y][x][1]=Map[y-1][x][2]+Map[y-1][x][1]
 print(sum(Map[-1][-1]))
 
-def pipe(x,y,d):
-    global ans
-    if x==N-1==y:ans+=1
-    if (d==0 or d==1) and y+1<N and A[x][y+1]==0:pipe(x,y+1,0)
-    if x+1<N and y+1<N and A[x][y+1]==A[x+1][y]==A[x+1][y+1]==0:pipe(x+1,y+1,1)
-    if (d==1 or d==2) and x+1<N and A[x+1][y]==0:pipe(x+1,y,2)
-N=int(input())
-A=[[int(x)for x in input().split()] for _ in range(N)]
-R=0
-pipe(0,1,0)
-print(R)
+# def pipe(x,y,d):
+#     global ans
+#     if x==N-1==y:ans+=1
+#     if (d==0 or d==1) and y+1<N and A[x][y+1]==0:pipe(x,y+1,0)
+#     if x+1<N and y+1<N and A[x][y+1]==A[x+1][y]==A[x+1][y+1]==0:pipe(x+1,y+1,1)
+#     if (d==1 or d==2) and x+1<N and A[x+1][y]==0:pipe(x+1,y,2)
+# N=int(input())
+# A=[[int(x)for x in input().split()] for _ in range(N)]
+# ans=0
+# pipe(0,1,0)
+# print(ans)
 
