@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('7508.txt','r')
+sys.stdin = open('3752.txt','r')
 
 for t in range(int(input())):
     N=int(input())
