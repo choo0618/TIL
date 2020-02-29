@@ -4,10 +4,8 @@ sys.stdin = open('4111.txt','r')
 for t in range(int(input())):
     N=int(input())
     K=int(input())
-    # A=list(set(int(x)for x in input().split()))
     A=[int(x) for x in input().split()]
     A.sort()
-    # N=len(A)
     R=0
     Map=[]
     for i in range(N-1):Map.append(A[i+1]-A[i])
