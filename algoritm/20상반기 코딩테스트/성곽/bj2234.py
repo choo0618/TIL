@@ -32,3 +32,4 @@ for i in range(N):
 print(len(S)-1)
 print(max(S))
 print(R)
+
