@@ -1,36 +1,32 @@
 import sys
 sys.stdin = open('bj16235.txt','r')
 
-dy=[-1,-1,0,1,1,1,0,-1]
-dx=[0,1,1,1,0,-1,-1,-1]
-def IS(y,x):
-    if 0<y<L[0]+1 and 0<x<L[0]+1:return True
-    return False
-L=[int(x)for x in input().split()]
-A=[[int(x)for x in input().split()]for y in range(L[0])]
-T=[[int(x)for x in input().split()]for y in range(L[1])]
-M=[[5]*L[0]for _ in range(L[0])]
-while L[2]:
-    S,t,t1=[],[],[]
-    for i in T:
-        ty=i[0]-1
-        tx=i[1]-1
-        Y=i[2]
-        if Y<=M[ty][tx]:
-            M[ty][tx]-=Y
-            i[2]+=1
-            t+=[[ty+1,tx+1,Y+1]]
-        else:S+=[[ty,tx,Y]];i[2]=0
-        if i[2] and not i[2]%5:
-            for dir in range(8):
-                nY=i[0]+dy[dir]
-                nX=i[1]+dx[dir]
-                if IS(nY,nX):t1+=[[nY,nX,1]]
-    T=t1+t
-    for s in S:
-        M[s[0]][s[1]]+=s[2]//2
-    for k in range(L[0]):
-        for l in range(L[0]):
-            M[k][l]+=A[k][l]
-    L[2]-=1
-print(len(T))
+def New(i,j):
+    for X,Y in (i-1,j-1),(i-1,j),(i-1,j+1),(i,j-1),(i,j+1),(i+1,j-1),(i+1,j),(i+1,j+1):
+        if -1<X<N and -1<Y<N:new[X][Y].append(1)
+N,M,K=map(int,input().split())
+A=[[int(x)for x in input().split()]for y in range(N)]
+T=[[[]for _ in range(N)]for __ in range(N)]
+for t in range(M):
+    x,y,Y=map(int,input().split())
+    T[x-1][y-1].append(Y)
+M=[[5]*N for _ in range(N)]
+while K:
+    new=[[[]for _ in range(N)] for _ in range(N)]
+    die=[[0]*N for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if not T[i][j]:continue
+            T[i][j].sort()
+            for y in T[i][j]:
+                if y<=M[i][j]:
+                    M[i][j]-=y
+                    new[i][j].append(y+1)
+                    if not (y+1)%5:New(i,j)
+                else:die[i][j]+=y//2;continue
+    for i in range(N):
+        for j in range(N):
+            M[i][j]+=(A[i][j]+die[i][j])
+            T[i][j]=new[i][j]
+    K-=1
+print(sum(len(T[i][j])for i in range(N)for j in range(N)))
