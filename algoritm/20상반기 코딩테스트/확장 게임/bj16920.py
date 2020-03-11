@@ -3,7 +3,6 @@ sys.stdin = open('bj16920.txt','r')
 
 import sys,collections
 input=sys.stdin.readline
-# from collections import deque
 def IS(y,x):
     return -1<y<N and -1<x<M
 def BFS(t):

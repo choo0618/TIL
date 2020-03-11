@@ -13,7 +13,6 @@ def MST():
         c,a,b=d
         if find(a)!=find(b):R+=c;union(a,b)
     return R
-
 V,E=map(int,input().split())
 L=[]
 for i in range(E):
