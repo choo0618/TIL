@@ -1,27 +1,19 @@
 import sys
 sys.stdin = open('bj2169.txt','r')
 
-dx=[0,1,-1]
-dy=[1,0,0]
-def IS(y,x):
-    return -1<y<N and -1<x<M
-def DFS(y,x,d):
-    if (y,x)==(N-1,M-1):return A[y][x]
-    tmp=DP[y][x][d]
-    if tmp!=-1000000:return tmp
-    for i in range(3):
-        Y,X=y+dy[i],x+dx[i]
-        if IS(Y,X) and not V[Y][X]:
-            V[Y][X]=1
-            tmp=max(tmp,DFS(Y,X,i)+A[y][x])
-            V[Y][X]=0
-    return tmp
 N,M=map(int,input().split())
 A=[[int(x)for x in input().split()]for y in range(N)]
-DP=[[[0,0,0]for _ in range(N)]for __ in range(M)]
-V=[[0]*M for _ in range(N)]
-for i in range(N):
+DP=[[0]*M for _ in range(N)]
+R=[0]*M
+DP[0][0]=A[0][0]
+for j in range(1,M):DP[0][j]=DP[0][j-1]+A[0][j]
+for i in range(1,N):
+    DP[i][0]=DP[i-1][0]+A[i][0]
+    for j in range(1,M):
+        DP[i][j]=max(DP[i-1][j],DP[i][j-1])+A[i][j]
+    R[M-1]=DP[i-1][M-1]+A[i][M-1]
+    for j in range(M-2,-1,-1):
+        R[j]=max(DP[i-1][j],R[j+1])+A[i][j]
     for j in range(M):
-        DP[i][j][0]=DP[i][j][1]=DP[i][j][2]=A[i][j]
-V[0][0]=1
-print(DFS(0,0,0))
+        DP[i][j]=max(DP[i][j],R[j])
+print(DP[N-1][M-1])
