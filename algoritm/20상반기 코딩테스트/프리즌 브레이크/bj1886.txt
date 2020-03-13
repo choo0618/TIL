@@ -1,0 +1,56 @@
+5 5
+XXDXX
+X...X
+D...X
+X...D
+XXXXX
+5 12
+XXXXXXXXXXXX
+X..........D
+X.XXXXXXXXXX
+X..........X
+XXXXXXXXXXXX
+10 10
+XXXXDXXXXX
+X.X......X
+XX.......X
+X........X
+D........D
+X........X
+X........X
+X........X
+X........X
+XXXXXXDXXX
+X........X
+5 5
+DDDDD
+DXXXD
+DX.XD
+DXXXD
+DDDDD
+5 5
+XDXXX
+X.XXX
+X...D
+X..XX
+XXDXX
+5 5
+XXDXX
+X...X
+D...X
+X...D
+XXXXX
+
+5 5
+DDDDD
+D...D
+D.X.D
+D...D
+DDDDD
+5 5
+XXXXX
+X..XX
+X...D
+X..XD
+XXXXX
+5 5
