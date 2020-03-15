@@ -9,3 +9,4 @@ while True:
     if r==N:break
     tmp=r
 print(R)
+
