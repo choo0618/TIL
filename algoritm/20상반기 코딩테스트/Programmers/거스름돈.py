@@ -1,9 +1,8 @@
 def solution(n, money):
     DP=[1]+[0]*(n)
-    money.sort()
     for c in money:
-        for i in range(1,n+1):
-            if i-c>=0 and DP[i-c]:DP[i]+=DP[i-c]
+        for i in range(c,n+1):
+            if DP[i-c]:DP[i]+=DP[i-c]
     print(DP)
     return DP[n]
 
