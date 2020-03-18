@@ -4,7 +4,7 @@ sys.stdin = open('bj1520.txt','r')
 def IS(y,x):
     return -1<y<N and -1<x<M
 def DFS(y,x):
-    # if (y,x)==(N-1,M-1):return 1
+    if (y,x)==(N-1,M-1):return 1
     if V[y][x]!=-1:return V[y][x]
     V[y][x]=0
     for d in [(0,1),(1,0),(0,-1),(-1,0)]:
