@@ -27,5 +27,5 @@ while Que and Check:
                 Map[nY][nX][nK]=1
                 Q.append((nY,nX,nK))
     Que=Q
-if Check:print(-1)
+if Check:print(0 if W==H==1 else -1)
 else:print(tmp)
