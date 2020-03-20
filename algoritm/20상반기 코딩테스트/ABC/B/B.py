@@ -86,3 +86,13 @@ sys.stdin = open('B.txt','r')
 # L=A*B
 # while B:A,B=B,A%B
 # print(A,L//A)
+
+# N,K=map(int,input().split())
+# L=list(range(1,N+1))
+# R=[]
+# idx=K-1
+# while True:
+#     R.append(str(L.pop(idx)))
+#     if not L:break
+#     idx=(idx-1+K)%len(L)
+# print('<'+', '.join(R)+'>')
