@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('A.txt','r')
+sys.stdin = open('A.txt', 'r')
 
 # I=[-1]*26
 # for i,c in enumerate(input()):
