@@ -96,3 +96,9 @@ sys.stdin = open('B.txt','r')
 #     if not L:break
 #     idx=(idx-1+K)%len(L)
 # print('<'+', '.join(R)+'>')
+
+for t in range(int(input())):
+    N=int(input())
+    DP=[0,1,1,1]+[0]*(N-3)
+    for i in range(4,N+1):DP[i]=DP[i-2]+DP[i-3]
+    print(DP[N])
