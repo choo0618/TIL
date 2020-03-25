@@ -1,7 +1,8 @@
 import sys
 sys.stdin = open('test.txt','r')
 
-input()
-print(*sorted({*input().split()},key=int))
-# print(*sorted({*input().split()}))
-print(*[1,2,3,4,5])
+for t in range(int(input())):
+    A,B=map(int,input().split())
+    L=A*B
+    while B:A,B=B,A%B
+    print(L//A)
