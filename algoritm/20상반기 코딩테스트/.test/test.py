@@ -1,10 +1,10 @@
 import sys
 sys.stdin = open('test.txt','r')
 
-N=int(input())
-A=[[int(x)for x in input().split()]for y in range(N)]
-for k in range(N):
-    for i in range(N):
-        for j in range(N):
-            A[i][j]=min(A[i][j],A[i][k]+A[k][j])
-print(A)
+for N in range(1,11):
+    S=''
+    while N:
+        N,b=divmod(N,3)
+        S+='412'[b]
+        if not b:N-=1
+    print(S[::-1])
