@@ -32,3 +32,6 @@ while N:
     r+=s**2*i
     N-=1
 print(r)
+
+
+
