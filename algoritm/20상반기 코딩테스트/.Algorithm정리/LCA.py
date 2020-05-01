@@ -29,3 +29,5 @@ for j in range(1,21):
 for p in range(int(input())):
     a,b=map(int,input().split())
     print(LCA(a,b))
+
+    
