@@ -5,12 +5,11 @@ def IS(y,x):
     return -1<y<5 and -1<x<9
 def DFS(p,cnt):
     global R,C
-    Check=1
+    if p<R:R,C=p,cnt
     for i in range(p):
         y,x=P[i]
         for tY,tX,Y,X in (y,x+1,y,x+2),(y+1,x,y+2,x),(y,x-1,y,x-2),(y-1,x,y-2,x):
-            if IS(Y,X) and A[tY][tX]=='o' and A[Y][X]!='#':
-                Check=0
+            if IS(Y,X) and A[tY][tX]=='o' and A[Y][X]=='.':
                 A[y][x]='.'
                 P[i]=[Y,X]
                 A[Y][X]='o'
@@ -25,7 +24,6 @@ def DFS(p,cnt):
                 A[y][x]='o'
                 P[i]=[y,x]
                 A[Y][X]='.'
-    if Check and p<R:R,C=p,cnt
 
 for t in range(int(input())):
     A=[]
@@ -38,7 +36,5 @@ for t in range(int(input())):
     R,C=len(P),0
     DFS(len(P),0)
     print(R,C)
-
-
     try:input()
     except:break
