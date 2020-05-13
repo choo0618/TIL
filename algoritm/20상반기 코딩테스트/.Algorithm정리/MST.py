@@ -1,12 +1,12 @@
 def MST():
     P=list(range(N))
     def find(x):
-        if P[x]!=x:
+        if P[x]!=x:P[x]=find(P[x])
         return P[x]
     def union(a,b):
         P[find(a)]=find(b)
     R=0
-    Cnt=0       # 간
+    Cnt=0       # 간선 수
     for cnt,a,b in A:
         if find(a)!=find(b):
             R+=cnt
