@@ -1,26 +1,22 @@
 import sys
 sys.stdin = open('bj17825.txt','r')
 
-def DFS(Idx,r,state):
+def DFS(idx,r,List):
     global R
-    if Idx == 10:
-        print(state)
-        if r>R:R=r
+    if idx==10:
+        R=max(R,r)
         return
-    for m in [1,2,3,4]:
-        if state[m]=='f':continue
-        s = State[state[m]][List[Idx]]
-        if not s in state or s=='f':
-            tmp = state[m]
-            state[m]=s
-            if s=='f':DFS(Idx+1,r,state)
-            else:DFS(Idx+1,r+Score[s],state)
-            state[m] = tmp
-List = [int(x)for x in input().split()]
-# [],2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,13,16,19,22,24,28,27,26,25,30,35,40,[]
-#    1 2 3 4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32
-Score = [0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,13,16,19,22,24,28,27,26,25,30,35,40]
-State=[
+    for i in range(4):
+        if List[i]=='f':continue
+        s=S[List[i]][L[idx]]
+        if s!='f' and s in List:continue
+        tmp=List[i]
+        List[i]=s
+        if s!='f':DFS(idx+1,r+P[s],List)
+        else:DFS(idx+1,r,List)
+        List[i]=tmp
+L=[int(x)for x in input().split()]
+S=[
 [0,1,2,3,4,5],
 [1,2,3,4,5,6],
 [2,3,4,5,6,7],
@@ -48,11 +44,17 @@ State=[
 [24,28,29,30,31,'f'],
 [25,26,27,28,29,30],
 [26,27,28,29,30,31],
-[27,28,29,30,31,'f'],
+[27, 28, 29, 30, 31,'f'],
 [28,29,30,31,'f','f'],
 [29,30,31,'f','f','f'],
 [30,31,'f','f','f','f'],
-[31,'f','f','f','f','f'],]
-R = 0
-DFS(0,0,[0,0,0,0,0])
+[31,'f','f','f','f','f']]
+P=[0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,13,16,19,22,24,28,27,26,25,30,35,40]
+R=0
+DFS(0,0,[0,0,0,0])
 print(R)
+
+
+
+
+
