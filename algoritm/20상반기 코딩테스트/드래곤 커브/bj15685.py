@@ -34,7 +34,7 @@ for t in range(int(input())):
     Map[x][y]=1
     D=[d]
     for i in range(g):
-        for j in range(len(D)-1,-1,-1):
+        for j in range(2**i-1,-1,-1):
             D.append((D[j]+1)%4)
     for d in D:
         x+=dx[d];y+=dy[d]

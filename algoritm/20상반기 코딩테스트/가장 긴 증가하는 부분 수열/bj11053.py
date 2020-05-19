@@ -9,3 +9,5 @@ for i in range(N):
     for j in range(i):
         if L[i]>L[j]:DP[i]=max(DP[i],DP[j]+1)
 print(max(DP))
+
+
