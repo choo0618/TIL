@@ -12,7 +12,7 @@ def MST():
             R+=cnt
             union(a,b)
             Cnt+=1
-    if Cnt==N-1:return R    # 간선==정점-1 일때 모두 연
+    if Cnt==N-1:return R    # 간선==정점-1 일때 모두 연결
     
 N=int(input())
 A=[(c,a,b)]     # 거리를 기준으로 정렬
