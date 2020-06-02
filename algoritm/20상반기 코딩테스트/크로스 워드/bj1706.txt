@@ -1,0 +1,11 @@
+4 5
+adaca
+da##b
+abb#b
+abbac
+5 5
+good#
+an##b
+messy
+e##it
+#late
