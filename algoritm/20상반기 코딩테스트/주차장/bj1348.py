@@ -33,10 +33,10 @@ def BFS(q):
 N,M=map(int,input().split())
 A=[input() for _ in range(N)]
 Map=[[-1]*M for _ in range(N)]
-Que,tmp=[],0
+Que,tmp,c=[],0,0
 for i in range(N):
     for j in range(M):
-        if A[i][j]=='C':Que.append((i,j,0))
+        if A[i][j]=='C':Que.append((i,j,0));c+=1
         elif A[i][j]=='P':Map[i][j]=tmp;tmp+=1
 if not len(Que):print(0);exit(0)
 if len(Que)>tmp:print(-1);exit(0)
@@ -48,16 +48,16 @@ for idx,q in enumerate(Que):
 Re=-1
 while l<=r:
     Mid=(l+r)//2
-    C=[-1]*len(Que)
+    C=[-1]*c
     P=[-1]*tmp
-    Z=[-1]*len(Que)
+    Z=[-1]*c
     R=0
-    for i in range(len(Que)):
+    for i in range(c):
         if C[i]==-1:
-            V=[0]*len(Que)
+            V=[0]*c
             if DFS(i,Mid):R+=1
-    if R==len(Que):
-        Re=max(Z)
+    if R==c:
+        Re=Mid
         r=Mid-1
     else:l=Mid+1
 print(Re)
