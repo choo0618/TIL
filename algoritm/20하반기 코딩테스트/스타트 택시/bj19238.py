@@ -12,8 +12,8 @@ def Sol(y,x,g,c):
     tmp,L=10**9,[]
     while Q:
         y,x,d=Q.popleft()
-        if c and Guest[y][x]:tmp=d;L.append((y,x,Guest[y][x]));continue
         if c and d>tmp:break
+        if c and Guest[y][x]:tmp=d;L.append((y,x,Guest[y][x]));continue
         if c==0 and n in State[y][x]:tmp=d;break
         for Y,X in (y-1,x),(y,x-1),(y,x+1),(y+1,x):
             if not IS(Y,X) or Map[Y][X] or V[Y][X]:continue
@@ -32,9 +32,8 @@ Y,X=map(int,input().split())
 Y-=1;X-=1
 for m in range(M):
     i,j,I,J=map(int,input().split())
-    i-=1;j-=1;I-=1;J-=1
-    Guest[i][j]=m+1
-    State[I][J].append(m+1)
+    Guest[i-1][j-1]=m+1
+    State[I-1][J-1].append(m+1)
 while M:
     Y,X,G=Sol(Y,X,G,1)
     if G<0:break
@@ -42,3 +41,4 @@ while M:
     if G<0:break
     M-=1
 print(G)
+
