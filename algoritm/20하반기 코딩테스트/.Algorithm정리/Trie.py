@@ -1,3 +1,5 @@
+# 문자열의 길이에 따라 딕셔너리 구성
+
 from collections import defaultdict
 def solution(words, queries):
     answer=[]
