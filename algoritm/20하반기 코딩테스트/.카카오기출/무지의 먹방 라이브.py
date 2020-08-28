@@ -6,8 +6,7 @@ def solution(food_times, k):
     while rotate:
         food=[]
         for f,i in food_times:
-            if f<rotate:Last+=rotate-f
-            elif f==rotate:continue
+            if f<=rotate:Last+=rotate-f
             else:food.append((f-rotate,i))
         if not food:return -1
         rotate,Last=divmod(Last,len(food))
