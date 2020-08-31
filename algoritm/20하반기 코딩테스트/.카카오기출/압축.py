@@ -7,12 +7,13 @@ def solution(msg):
         while word in Dic and idx!=Len:
             word+=msg[idx]
             idx+=1
-        answer.append(Dic[word[:len(word)-1]])
+        if idx==Len and word in Dic:break
         Dic[word]=n
         n+=1
+        answer.append(Dic[word[:len(word)-1]])
         word=word[-1]
     answer.append(Dic[word])
-    print(answer)
     return answer
 
 solution('KAKAO')
+solution('TOBEORNOTTOBEORTOBEORNOT')
