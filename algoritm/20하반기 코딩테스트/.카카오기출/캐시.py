@@ -3,10 +3,10 @@ def solution(cacheSize, cities):
     if cacheSize==0:return 5*len(cities)
     Q,Len=[],0
     for c in cities:
+        c=c.upper()
         if c in Q:
-            idx=Q.index(c)
-            answer+=idx + 1
-            Q.pop(idx)
+            answer+=1
+            Q.pop(Q.index(c))
         else:
             if Len>=cacheSize:Q=Q[1:]
             answer+=5
