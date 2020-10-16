@@ -24,13 +24,15 @@ def BFS(n):
     Chk=1
     return tmp
 N,M,T=map(int,input().split())
-A=[deque(int(_)for _ in input().split())for __ in range(N)]
+A=[[int(_)for _ in input().split()]for __ in range(N)]
+# A=[deque(int(_)for _ in input().split())for __ in range(N)]
 Cnt,Sum=N*M,sum(sum(a)for a in A)
 for t in range(T):
     x,d,k=map(int,input().split())
-    if d:k=M-k
+    if d==0:k=M-k
     for i in range(x-1,N,x):
-        for n in range(k):A[i].rotate()
+        A[i]=A[i][k:]+A[i][:k]
+        # A[i].rotate(k)
     V=[[0]*M for _ in range(N)]
     Chk=0
     for i in range(N):
