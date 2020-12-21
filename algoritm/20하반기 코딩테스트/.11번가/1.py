@@ -9,5 +9,7 @@ def solution(S):
             answer += 2-tmp
             tmp = 0
     answer += 2-tmp
-
+    print(answer)
     return answer
+
+solution('abcdefg')
